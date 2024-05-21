@@ -1,45 +1,58 @@
 .snake_nav {
   background-color: #b9d77f;
-  padding: 0.5%;
-  font-size: xx-large;
+  padding: 2vh;
+  font-size: 2.5vw;
   font-weight: 700;
   color: #0d4833;
 }
 
 .score_div {
-  padding: 2%;
+  margin-top: 1vh;
+  padding: 2vh 2vw;
 }
 
 .score_btn {
-  margin-inline: 44%;
-  margin-bottom: 8px;
-  padding-block: 10px;
+  margin-inline: 40vw;
+  margin-bottom: 2vh;
+  padding-block: 1.5vh;
   background-color: #b7e967c4;
   box-shadow: 0px 0px 8px #49474f;
   border-radius: 20px;
   font-weight: 600;
-  font-size: larger;
+  font-size: 1.5vw;
 }
 
 .start_btn {
   background: rgb(34, 34, 29);
   color: rgb(226, 241, 195);
   border: none;
-  border-radius: 7px;
-  padding: 8px 10px;
-  font-size: large;
-  box-shadow: 0px 0px 5px #b37272;
+  border-radius: 1em;
+  padding: 1.5vh 1.5vw;
+  font-size: 1vw;
+  box-shadow: 0px 0px 10px #252525;
   font-family: cursive;
+  text-align: center;
 }
 
 .game_board {
+  /* border: 3px double #786d6d;
   background: linear-gradient(rgb(190, 206, 146), rgb(254, 255, 195));
-  width: 50vmin;
-  height: 50vmin;
-  border: 2px double !important;
-  display: grid;
-  grid-template-columns: repeat(18, 1fr);
-  grid-template-rows: repeat(18, 1fr);
-  margin: 5vh auto;
-  position: relative;
+  margin: 2vh 2vw;
+  border-radius: 1em; */
+
+  border: 3px double #786d6d;
+  background: linear-gradient(rgb(190, 206, 146), rgb(254, 255, 195));
+  margin: 2vh auto;
+  border-radius: 7px;
+  box-sizing: border-box;
+}
+
+.game_over {
+  border: 3px double #786d6d;
+  background: #ffffff78;
+  margin-block: 2vh;
+  padding: 3vmin;
+  border-radius: 0.3em;
+  font-size: 2vw;
+  font-weight: 600;
 }
