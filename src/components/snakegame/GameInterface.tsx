@@ -108,10 +108,46 @@ function GameInterface(): JSX.Element {
     if (context) {
       context.setTransform(SCALE, 0, 0, SCALE, 1, 1);
       context.clearRect(0, 0, window.innerWidth, window.innerHeight);
-      context.fillStyle = "#818f12";
-      snake.forEach(([x, y]) => context.fillRect(x, y, 1, 1));
-      context.fillStyle = "#eb70ba";
-      context.fillRect(apple[0], apple[1], 0.9, 0.9);
+
+      // Draw the snake
+      // context.fillStyle = "#818f12";
+      // snake.forEach(([x, y]) => context.fillRect(x, y, 1, 1));
+
+      // Draw apple
+      // context.fillStyle = "#eb70ba";
+      // context.fillRect(apple[0], apple[1], 0.9, 0.9);
+
+      // Draw the snake with styling
+      snake.forEach(([x, y], index) => {
+        // Alternate colors for each segment
+        context.fillStyle = index % 2 === 0 ? "#4CAF50" : "#8BC34A"; 
+
+        // Draw the main rectangle
+        context.fillRect(x, y, 1, 1);
+
+        // Add a border to each segment
+        context.strokeStyle = "#ffffff"; 
+        context.lineWidth = 0.05; 
+        context.strokeRect(x, y, 1, 1);
+      });
+
+      // Create an off-screen canvas to render the emoji
+      const offscreenCanvas = document.createElement("canvas");
+      const offscreenContext = offscreenCanvas.getContext("2d");
+
+      if (offscreenContext) {
+        offscreenCanvas.width = 32;
+        offscreenCanvas.height = 32;
+
+        // Draw the emoji on the off-screen canvas
+        offscreenContext.font = "32px serif";
+        offscreenContext.textAlign = "center";
+        offscreenContext.textBaseline = "middle";
+        offscreenContext.fillText("🍎", 16, 16);
+
+        // Draw the emoji from the off-screen canvas to the main canvas
+        context.drawImage(offscreenCanvas, apple[0], apple[1], 1, 1);
+      }
     }
   }, [snake, apple, startGame]);
 
