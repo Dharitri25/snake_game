@@ -1,12 +1,12 @@
 import React, { useState, useRef, useEffect, KeyboardEvent } from "react";
 import { useInterval } from "../utils/useInterval";
 import {
-  CANVAS_SIZE,
-  SNAKE_START,
-  APPLE_START,
   SCALE,
   SPEED,
   DIRECTIONS,
+  APPLE_START,
+  CANVAS_SIZE,
+  SNAKE_START,
 } from "../utils/constants";
 
 function GameInterface(): JSX.Element {
@@ -63,6 +63,7 @@ function GameInterface(): JSX.Element {
       piece[1] < 0
     )
       return true;
+    
     for (const segment of snk) {
       if (piece[0] === segment[0] && piece[1] === segment[1]) return true;
     }
@@ -120,14 +121,14 @@ function GameInterface(): JSX.Element {
       // Draw the snake with styling
       snake.forEach(([x, y], index) => {
         // Alternate colors for each segment
-        context.fillStyle = index % 2 === 0 ? "#4CAF50" : "#8BC34A"; 
+        context.fillStyle = index % 2 === 0 ? "#4CAF50" : "#8BC34A";
 
         // Draw the main rectangle
         context.fillRect(x, y, 1, 1);
 
         // Add a border to each segment
-        context.strokeStyle = "#ffffff"; 
-        context.lineWidth = 0.05; 
+        context.strokeStyle = "#ffffff";
+        context.lineWidth = 0.05;
         context.strokeRect(x, y, 1, 1);
       });
 
@@ -166,21 +167,27 @@ function GameInterface(): JSX.Element {
         </div>
       </div>
       <div>
-        {startGame ? (
-          <button className="start_btn" onClick={startSnkGame}>
-            Start Again
-          </button>
-        ) : (
-          <button
-            className="start_btn"
-            onClick={() => {
-              setStartGame(true);
-              startSnkGame();
-            }}
-          >
-            Start 🐍 Game
-          </button>
-        )}
+        {!startGame &&
+          (score === 0 ? (
+            <div className="start_section">
+              <button
+                className="start_btn"
+                onClick={() => {
+                  setStartGame(true);
+                  startSnkGame();
+                }}
+              >
+                Start 🐍 Game
+              </button>
+              <span>
+                Instruction: Use arrow keys to move the snake (⬆️➡️⬇️⬅️)
+              </span>
+            </div>
+          ) : (
+            <button className="start_btn" onClick={startSnkGame}>
+              Start Again
+            </button>
+          ))}
       </div>
       {startGame ? (
         <canvas

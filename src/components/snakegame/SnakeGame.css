@@ -68,6 +68,17 @@
   text-align: center;
 }
 
+.start_section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1em;
+  color: #15707a;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
 .game_board {
   /* border: 3px double #786d6d;
   background: linear-gradient(rgb(190, 206, 146), rgb(254, 255, 195));
